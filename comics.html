@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Caitlyn's Cool Site</title>
+  <title>Caitlyn's Cool Site - Comics</title>
   <meta charset="UTF-8">
 
   <script>
@@ -16,6 +16,7 @@
 
     window.onload = function() {
       initCounter();
+      renderComics();
     };
   </script>
 </head>
@@ -37,7 +38,6 @@
     </td>
   </tr>
 
-  <!-- SIDEBAR + CONTENT -->
   <tr>
 
     <!-- SIDEBAR -->
@@ -66,28 +66,43 @@
       You are visitor #<span id="visitorNumber">000000</span>
     </td>
 
-          <div id="comics" class="content-section">
-            <h2><font color="#ff00cc">MY COMICS</font></h2>
-            <hr>
-            <table border="1" cellpadding="10" width="100%">
-              <tr>
-                <td align="center" bgcolor="#eeeeee">
-<div id="comic-container"></div>
+    <!-- MAIN CONTENT -->
+    <td valign="top" bgcolor="#ffffff">
 
-<center>
-  <br>
-  <button onclick="prevPage()">Previous</button>
-  <span id="page-number"></span>
-  <button onclick="nextPage()">Next</button>
+      <h2><font color="#ff00cc">MY COMICS</font></h2>
+      <hr>
+
+      <div id="comic-container"></div>
+
+      <center>
+        <br>
+        <button onclick="prevPage()">Previous</button>
+        <span id="page-number"></span>
+        <button onclick="nextPage()">Next</button>
+      </center>
+
+    </td>
+  </tr>
+
+  <!-- FOOTER -->
+  <tr>
+    <td colspan="2" align="center" bgcolor="#ffccff">
+      <font size="2">
+        © 2003 Caitlyn | This site is ALWAYS under construction
+      </font>
+    </td>
+  </tr>
+
+</table>
+
 </center>
 
 <script>
 
-  // ADD NEW COMICS HERE (TOP = NEWEST)
+  // 🔥 ADD NEW COMICS HERE (TOP = NEWEST)
 
   const comics = [
-    { title: "Test", date: "Feb 20, 2026", file: "strip1.png" },
-   
+    { title: "Week 3 – Existential Frog", date: "Feb 20, 2026", file: "strip1.png" },
   ];
 
   const comicsPerPage = 5;
@@ -105,7 +120,7 @@
       container.innerHTML += `
         <div style="margin-bottom:40px;">
           <h3>${comic.title}</h3>
-          <p>${comic.date}</p>
+          <p><font size="2">${comic.date}</font></p>
           <img src="comics/${comic.file}" width="600">
         </div>
       `;
@@ -129,62 +144,7 @@
     }
   }
 
-  renderComics();
+</script>
 
-</script>                
-                </td>
-              </tr>
-            </table>
-          </div>
-
-          <div id="stories" class="content-section" style="display:none;">
-            <h2><font color="#0033cc">SHORT STORIES</font></h2>
-            <hr>
-            <p><b>Story Title</b></p>
-            <p><font size="2">Posted February 2004</font></p>
-            <p>
-              This is where the story would start. Probably something dramatic
-              and slightly angsty because it is 2004 and feelings are important.
-            </p>
-          </div>
-
-          <div id="blog" class="content-section" style="display:none;">
-            <h2><font color="#009900">MY BLOG</font></h2>
-            <hr>
-            <p><b>OMG HI INTERNET</b></p>
-            <p><font size="2">March 12, 2003 - 11:43 PM</font></p>
-            <p>
-              I redesigned my layout again. I think this is version 7??
-              Leave a comment in the guestbook!!!
-            </p>
-          </div>
-
-          <div id="about" class="content-section" style="display:none;">
-            <h2><font color="#6600cc">ABOUT ME</font></h2>
-            <hr>
-            <p>
-              Hi I'm Caitlyn. Welcome to my website. I like making comics and
-              writing stories and being on the internet.
-            </p>
-            <p>
-              <b>Currently Listening To:</b> emotional_song.mp3
-            </p>
-            <marquee behavior="scroll" direction="left">
-              Thanks for visiting my site!!!
-            </marquee>
-          </div>
-
-        </td>
-      </tr>
-
-      <tr>
-        <td colspan="2" align="center" bgcolor="#ffccff">
-          <font size="2">
-            © 2003 Caitlyn | This site is ALWAYS under construction
-          </font>
-        </td>
-      </tr>
-    </table>
-  </center>
 </body>
 </html>
