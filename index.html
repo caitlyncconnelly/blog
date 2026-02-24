@@ -76,6 +76,11 @@
 
       <p>This is CC's site.</p>
 
+      <h2><font color="#ff00cc">LATEST COMIC</font></h2>
+<hr>
+
+<div id="latest-comic"></div>
+
       <!-- END PAGE CONTENT -->
 
     </td>
@@ -93,5 +98,26 @@
 </table>
 
 </center>
+  <script src="comics-data.js"></script>
+
+<script>
+  function showLatestComic() {
+    if (!comics || comics.length === 0) return;
+
+    const latest = comics[0];
+
+    document.getElementById("latest-comic").innerHTML = `
+      <div style="margin-bottom:40px;">
+        <h3>${latest.title}</h3>
+        <p><font size="2">${latest.date}</font></p>
+        <a href="comics.html">
+          <img src="comics/${latest.file}" width="600">
+        </a>
+      </div>
+    `;
+  }
+
+  showLatestComic();
+</script>
 </body>
 </html>
