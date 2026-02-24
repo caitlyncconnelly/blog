@@ -75,7 +75,67 @@
             <table border="1" cellpadding="10" width="100%">
               <tr>
                 <td align="center" bgcolor="#eeeeee" height="200">
-<img src="comics/strip1.png">
+<div id="comic-container"></div>
+
+<center>
+  <br>
+  <button onclick="prevPage()">Previous</button>
+  <span id="page-number"></span>
+  <button onclick="nextPage()">Next</button>
+</center>
+
+<script>
+
+  // ADD NEW COMICS HERE (TOP = NEWEST)
+
+  const comics = [
+    { title: "Week 3 – Existential Frog", date: "Feb 20, 2026", file: "strip3.png" },
+    { title: "Week 2 – Grocery Store Meltdown", date: "Feb 13, 2026", file: "strip2.png" },
+    { title: "Week 1 – First Comic", date: "Feb 6, 2026", file: "strip1.png" }
+  ];
+
+  const comicsPerPage = 5;
+  let currentPage = 1;
+
+  function renderComics() {
+    const container = document.getElementById("comic-container");
+    container.innerHTML = "";
+
+    const start = (currentPage - 1) * comicsPerPage;
+    const end = start + comicsPerPage;
+    const pageComics = comics.slice(start, end);
+
+    pageComics.forEach(comic => {
+      container.innerHTML += `
+        <div style="margin-bottom:40px;">
+          <h3>${comic.title}</h3>
+          <p>${comic.date}</p>
+          <img src="comics/${comic.file}" width="600">
+        </div>
+      `;
+    });
+
+    document.getElementById("page-number").innerText =
+      "Page " + currentPage + " of " + Math.ceil(comics.length / comicsPerPage);
+  }
+
+  function nextPage() {
+    if (currentPage < Math.ceil(comics.length / comicsPerPage)) {
+      currentPage++;
+      renderComics();
+    }
+  }
+
+  function prevPage() {
+    if (currentPage > 1) {
+      currentPage--;
+      renderComics();
+    }
+  }
+
+  renderComics();
+
+</script>                
                 </td>
               </tr>
             </table>
