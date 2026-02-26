@@ -119,16 +119,50 @@ a img:hover {
 
 </center>
 
-<form
-  action="https://buttondown.com/api/emails/embed-subscribe/ccconnelly"
-  method="post"
-  class="embeddable-buttondown-form"
-  referrerpolicy="unsafe-url"
->
+<div class="embeddable-buttondown-form">
   <label for="bd-email">Get comics straight to your e-mail</label>
-  <input type="email" name="email" id="bd-email" />
-  <input type="submit" value="Subscribe" />
-</form>
+  <input type="email" id="bd-email" placeholder="your@email.com" />
+  <button onclick="subscribeButtondown()">Subscribe</button>
+  <p id="bd-message" style="display:none; font-size:0.85rem;"></p>
+</div>
+
+<script>
+  function subscribeButtondown() {
+    const email = document.getElementById("bd-email").value;
+    const msg = document.getElementById("bd-message");
+
+    if (!email) {
+      msg.style.display = "block";
+      msg.style.color = "red";
+      msg.textContent = "Please enter your email!";
+      return;
+    }
+
+    const data = new FormData();
+    data.append("email", email);
+
+    fetch("https://buttondown.com/api/emails/embed-subscribe/ccconnelly", {
+      method: "POST",
+      body: data,
+    })
+    .then(res => {
+      msg.style.display = "block";
+      if (res.status === 200 || res.status === 201) {
+        msg.style.color = "green";
+        msg.textContent = "Thanks for subscribing! ✉️";
+        document.getElementById("bd-email").value = "";
+      } else {
+        msg.style.color = "red";
+        msg.textContent = "Something went wrong — please try again.";
+      }
+    })
+    .catch(() => {
+      msg.style.display = "block";
+      msg.style.color = "red";
+      msg.textContent = "Something went wrong — please try again.";
+    });
+  }
+</script>
 
 <div class="footer">
   © 2003 Caitlyn | This site is ALWAYS under construction
