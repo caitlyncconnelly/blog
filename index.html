@@ -6,12 +6,12 @@
 <style>
 
 .home-grid {
-  width: 800px; /* wider overall */
+  width: 800px;
   margin: 30px auto;
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr; /* middle column gets twice the space */
+  grid-template-columns: minmax(min-content, 150px) 2fr minmax(min-content, 150px);
   grid-template-rows: auto auto auto;
-  gap: 20px 30px;
+  gap: 20px 10px; /* reduced horizontal gap */
   justify-items: center;
   align-items: center;
 }
