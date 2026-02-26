@@ -73,20 +73,7 @@ a img:hover {
 }
 
 </style>
-  <script>
-    function initCounter() {
-      var hits = localStorage.getItem("retro-site-hits");
-      hits = hits ? parseInt(hits) + 1 : 1;
-      localStorage.setItem("retro-site-hits", hits);
-      var formatted = ("000000" + hits).slice(-6);
-      document.getElementById("hitCounter").innerHTML = formatted;
-      document.getElementById("visitorNumber").innerHTML = formatted;
-    }
-
-    window.onload = function() {
-      initCounter();
-    };
-  </script>
+ 
 </head>
 <center>
 
@@ -146,28 +133,8 @@ a img:hover {
 </script>
 
 <div class="footer">
-  © 2003 Caitlyn | This site is ALWAYS under construction
+  © 1998 Caitlyn | This site is ALWAYS under construction
 </div>
-  <script src="comics-data.js"></script>
-
-<script>
-  function showLatestComic() {
-    if (!comics || comics.length === 0) return;
-
-    const latest = comics[0];
-
-    document.getElementById("latest-comic").innerHTML = `
-      <div style="margin-bottom:40px;">
-        <h3>${latest.title}</h3>
-        <p><font size="2">${latest.date}</font></p>
-        <a href="comics.html">
-          <img src="comics/${latest.file}" width="600">
-        </a>
-      </div>
-    `;
-  }
-
-  showLatestComic();
-</script>
+ 
 </body>
 </html>
