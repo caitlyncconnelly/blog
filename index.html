@@ -9,11 +9,11 @@
   width: 800px;
   margin: 30px auto;
   display: grid;
-  grid-template-columns: minmax(min-content, 150px) 2fr minmax(min-content, 150px);
+  grid-template-columns: max-content 2fr max-content;
   grid-template-rows: auto auto auto;
-  gap: 20px 10px; /* reduced horizontal gap */
+  gap: 5px 10px; /* first value is row gap, second is column gap */
   justify-items: center;
-  align-items: center;
+  align-items: start; /* change from center to start */
 }
 
 .home-grid img {
