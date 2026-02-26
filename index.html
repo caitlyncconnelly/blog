@@ -119,48 +119,28 @@ a img:hover {
 
 </center>
 
-<div class="embeddable-buttondown-form">
+<iframe name="bd-hidden" style="display:none;"></iframe>
+
+<form
+  action="https://buttondown.com/api/emails/embed-subscribe/ccconnelly"
+  method="post"
+  target="bd-hidden"
+  class="embeddable-buttondown-form"
+  referrerpolicy="unsafe-url"
+  onsubmit="handleSubscribe(event)"
+>
   <label for="bd-email">Get comics straight to your e-mail</label>
-  <input type="email" id="bd-email" placeholder="your@email.com" />
-  <button onclick="subscribeButtondown()">Subscribe</button>
-  <p id="bd-message" style="display:none; font-size:0.85rem;"></p>
-</div>
+  <input type="email" name="email" id="bd-email" placeholder="your@email.com" required />
+  <input type="submit" value="Subscribe" />
+  <p id="bd-message" style="display:none; font-size:0.85rem; color:green;">Thanks for subscribing! Check your inbox to confirm. ✉️</p>
+</form>
 
 <script>
-  function subscribeButtondown() {
-    const email = document.getElementById("bd-email").value;
-    const msg = document.getElementById("bd-message");
-
-    if (!email) {
-      msg.style.display = "block";
-      msg.style.color = "red";
-      msg.textContent = "Please enter your email!";
-      return;
-    }
-
-    const data = new FormData();
-    data.append("email", email);
-
-    fetch("https://buttondown.com/api/emails/embed-subscribe/ccconnelly", {
-      method: "POST",
-      body: data,
-    })
-    .then(res => {
-      msg.style.display = "block";
-      if (res.status === 200 || res.status === 201) {
-        msg.style.color = "green";
-        msg.textContent = "Thanks for subscribing! ✉️";
-        document.getElementById("bd-email").value = "";
-      } else {
-        msg.style.color = "red";
-        msg.textContent = "Something went wrong — please try again.";
-      }
-    })
-    .catch(() => {
-      msg.style.display = "block";
-      msg.style.color = "red";
-      msg.textContent = "Something went wrong — please try again.";
-    });
+  function handleSubscribe(e) {
+    setTimeout(function() {
+      document.getElementById("bd-message").style.display = "block";
+      document.getElementById("bd-email").value = "";
+    }, 500);
   }
 </script>
 
