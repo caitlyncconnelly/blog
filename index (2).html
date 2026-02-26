@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>cc.com.net</title>
+  <meta charset="UTF-8">
+<style>
+
+.home-grid {
+  width: 900px;
+  margin: 60px auto;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto auto auto;
+
+  gap: 40px 60px;
+  justify-items: center;
+  align-items: center;
+}
+
+.home-grid img {
+  max-width: 260px;
+}
+
+/* Portrait sits in the center cell (row 2, col 2) */
+.portrait {
+  grid-column: 2;
+  grid-row: 2;
+  max-width: 300px;
+}
+
+/* Place each button explicitly */
+.btn-comics    { grid-column: 1; grid-row: 1; }
+.btn-blog      { grid-column: 3; grid-row: 1; }
+.btn-stories   { grid-column: 1; grid-row: 3; }
+.btn-sketchbook{ grid-column: 3; grid-row: 3; }
+.btn-about     { grid-column: 2; grid-row: 3; }
+
+a img:hover {
+  transform: scale(1.05);
+}
+
+</style>
+  <script>
+    function initCounter() {
+      var hits = localStorage.getItem("retro-site-hits");
+      hits = hits ? parseInt(hits) + 1 : 1;
+      localStorage.setItem("retro-site-hits", hits);
+      var formatted = ("000000" + hits).slice(-6);
+      document.getElementById("hitCounter").innerHTML = formatted;
+      document.getElementById("visitorNumber").innerHTML = formatted;
+    }
+
+    window.onload = function() {
+      initCounter();
+    };
+  </script>
+</head>
+<center>
+
+<h1 style="margin-top:40px;">C.C. Connelly</h1>
+
+<div class="home-grid">
+
+  <a href="comics.html" class="btn-comics">
+    <img src="images/comics-button.png">
+  </a>
+
+  <a href="blog.html" class="btn-blog">
+    <img src="images/blog-button.png">
+  </a>
+
+  <img src="images/selfportrait.png" class="portrait">
+
+  <a href="stories.html" class="btn-stories">
+    <img src="images/stories-button.png">
+  </a>
+
+  <a href="sketchbook.html" class="btn-sketchbook">
+    <img src="images/sketchbook-button.png">
+  </a>
+
+  <a href="about.html" class="btn-about">
+    <img src="images/about-button.png">
+  </a>
+
+</div>
+
+</center>
+
+<form
+  action="https://buttondown.com/api/emails/embed-subscribe/ccconnelly"
+  method="post"
+  class="embeddable-buttondown-form"
+  referrerpolicy="unsafe-url"
+>
+  <label for="bd-email">Get comics straight to your e-mail</label>
+  <input type="email" name="email" id="bd-email" />
+  <input type="submit" value="Subscribe" />
+</form>
+
+      <!-- END PAGE CONTENT -->
+
+    </td>
+  </tr>
+
+  <!-- FOOTER -->
+  <tr>
+    <td colspan="2" align="center" bgcolor="#ffccff">
+      <font size="2">
+        © 2003 Caitlyn | This site is ALWAYS under construction
+      </font>
+    </td>
+  </tr>
+
+</table>
+
+</center>
+  <script src="comics-data.js"></script>
+
+<script>
+  function showLatestComic() {
+    if (!comics || comics.length === 0) return;
+
+    const latest = comics[0];
+
+    document.getElementById("latest-comic").innerHTML = `
+      <div style="margin-bottom:40px;">
+        <h3>${latest.title}</h3>
+        <p><font size="2">${latest.date}</font></p>
+        <a href="comics.html">
+          <img src="comics/${latest.file}" width="600">
+        </a>
+      </div>
+    `;
+  }
+
+  showLatestComic();
+</script>
+</body>
+</html>
