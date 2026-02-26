@@ -3,7 +3,41 @@
 <head>
   <title>cc.com.net</title>
   <meta charset="UTF-8">
+<style>
 
+.home-grid {
+  width: 900px;
+  margin: 60px auto;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto auto;
+
+  gap: 80px 140px;
+  justify-items: center;
+  align-items: center;
+}
+
+.home-grid img {
+  max-width: 260px;
+}
+
+/* center portrait */
+.portrait {
+  grid-column: span 2;
+  max-width: 300px;
+}
+
+/* ABOUT centered under portrait */
+.about {
+  grid-column: span 2;
+}
+
+a img:hover {
+  transform: scale(1.05);
+}
+
+</style>
   <script>
     function initCounter() {
       var hits = localStorage.getItem("retro-site-hits");
